@@ -1,0 +1,20 @@
+{
+  "name": "asmodeus",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "dev/*",
+    "scripts"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc -p packages/contracts && tsc -p packages/server && tsc -p dev/mocks && tsc -p scripts",
+    "smoke": "bun scripts/smoke.ts",
+    "mocks": "bun dev/mocks/src/main.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.9.0"
+  }
+}

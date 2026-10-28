@@ -1,0 +1,51 @@
+# Minimal production-style configuration. Secrets come from the environment.
+server:
+  host: 0.0.0.0
+  port: 8080
+dataDir: /data
+
+auth:
+  mode: tokens
+  tokens:
+    # Create with: docker run --rm ghcr.io/fraktalis/asmodeus token:create
+    - name: dashboard
+      sha256: ${ASMODEUS_DASHBOARD_TOKEN_SHA256}
+      scopes: [overview:read]
+
+attention:
+  flapWindowMinutes: 60
+  collectorUnreachableMinutes: 5
+
+retention:
+  transitionsDays: 90
+
+collectors:
+  - id: uptime
+    type: uptime_kuma
+    intervalSeconds: 60
+    config:
+      baseUrl: https://uptime.example.com
+      apiKey: ${UPTIME_KUMA_API_KEY}
+    rules:
+      uptime_kuma.monitor_down:
+        params:
+          forMinutes: 5
+      uptime_kuma.cert_expiring:
+        params:
+          warnDays: 14
+          critDays: 3
+
+  - id: tasks
+    type: vikunja
+    intervalSeconds: 300
+    config:
+      baseUrl: https://tasks.example.com
+      apiToken: ${VIKUNJA_API_TOKEN}
+      # projectIds: [1, 6]
+    rules:
+      vikunja.task_overdue:
+        params:
+          graceHours: 0
+          critPriority: 4
+      vikunja.urgent_stale:
+        enabled: false

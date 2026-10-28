@@ -1,0 +1,6 @@
+{
+  "name": "@asmodeus/scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@asmodeus/contracts": "workspace:*" }
+}

@@ -11,3 +11,4 @@ dist/
 asmodeus.yaml
 !examples/**/asmodeus.yaml
 .DS_Store
+data/

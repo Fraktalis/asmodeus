@@ -1,0 +1,7 @@
+{
+  "name": "@asmodeus/mocks",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "start": "bun src/main.ts" }
+}

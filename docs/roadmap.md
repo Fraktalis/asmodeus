@@ -4,6 +4,8 @@ Each phase starts by settling its deferred decisions (see [`CONTEXT.md`](../CONT
 
 ## Phase 1 — Backend vertical slice
 
+Status: implemented; acceptance verified locally (`bun run smoke` against `compose.dev.yaml`). Not yet validated against real instances.
+
 - Bun workspaces: `packages/contracts`, `packages/server` (`packages/web` empty).
 - `asmodeus.yaml` loader with Zod validation and `${ENV}` interpolation.
 - Collector contract (ADR-0009) and generic conformance suite.
@@ -11,7 +13,7 @@ Each phase starts by settling its deferred decisions (see [`CONTEXT.md`](../CONT
 - `Store` port + SQLite adapter (Drizzle migrations) with its conformance suite: latest observations, transitions, attention items.
 - Minimal rule engine with the rules of both collectors; auto-resolve and flapping.
 - `GET /api/overview` protected by service tokens; `auth: none` only on `127.0.0.1`.
-- Dockerfile, `compose.dev.yaml`, mock servers in `dev/mocks/` replaying recorded fixtures.
+- Dockerfile, `compose.dev.yaml`, mock servers in `dev/mocks/` serving fixtures (hand-written from the documented API formats; to replace with responses recorded from real instances).
 - GitHub Actions: tests on every push, GHCR image on tags.
 
 **Acceptance**

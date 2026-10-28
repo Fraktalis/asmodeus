@@ -1,0 +1,19 @@
+{
+  "name": "@asmodeus/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun src/main.ts",
+    "db:generate": "drizzle-kit generate",
+    "token:create": "bun src/auth/create-token.ts"
+  },
+  "dependencies": {
+    "@asmodeus/contracts": "workspace:*",
+    "drizzle-orm": "^0.44.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@asmodeus/mocks": "workspace:*",
+    "drizzle-kit": "^0.31.0"
+  }
+}
