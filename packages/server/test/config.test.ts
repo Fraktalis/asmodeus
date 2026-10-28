@@ -39,7 +39,7 @@ describe("loadConfig", () => {
 
     expect(config.server).toEqual({ host: "127.0.0.1", port: 8080 });
     expect(config.dataDir).toBe("./data");
-    expect(config.attention.flapWindowMinutes).toBe(60);
+    expect(config.attention).toEqual({ flapWindowMinutes: 60, collectorUnreachableMinutes: 5 });
     expect(config.retention.transitionsDays).toBe(90);
     expect(config.collectors).toEqual([
       {

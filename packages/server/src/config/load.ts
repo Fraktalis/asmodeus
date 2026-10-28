@@ -43,7 +43,12 @@ const RawConfigSchema = z.object({
     .default({ host: "0.0.0.0", port: 8080 }),
   dataDir: z.string().default("./data"),
   auth: AuthSchema,
-  attention: z.object({ flapWindowMinutes: z.number().int().min(0).default(60) }).default({ flapWindowMinutes: 60 }),
+  attention: z
+    .object({
+      flapWindowMinutes: z.number().int().min(0).default(60),
+      collectorUnreachableMinutes: z.number().int().min(0).default(5),
+    })
+    .default({ flapWindowMinutes: 60, collectorUnreachableMinutes: 5 }),
   retention: z.object({ transitionsDays: z.number().int().min(1).default(90) }).default({ transitionsDays: 90 }),
   collectors: z.array(RawCollectorSchema).default([]),
 });

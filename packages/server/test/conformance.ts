@@ -5,7 +5,7 @@ export type ConformanceSource = { config: unknown; stop(): Promise<void> };
 
 export type ConformanceSetup = {
   type: CollectorType<any>;
-  /** Starts a fake source serving recorded fixtures; returns a valid config pointing at it. */
+  /** Starts a fake source serving fixtures; returns a valid config pointing at it. */
   start(): Promise<ConformanceSource>;
   /** Same source, but the config carries wrong credentials. */
   startUnauthorized(): Promise<ConformanceSource>;

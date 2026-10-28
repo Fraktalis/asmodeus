@@ -17,7 +17,8 @@ This file is the shared vocabulary. Decisions and their rationale live in [`docs
 | **Entity** | One thing a collector reports on, identified by a stable `entityKey` such as `uptime_kuma:main/vikunja`. |
 | **Observation** | The state of an entity at a point in time: `status` (`ok` / `warn` / `crit` / `unknown`), `summary`, `attributes`, `sourceUrl`, `observedAt`. Only the latest observation per entity is kept. |
 | **Transition** | An append-only record that an entity's status changed. Retained 90 days by default. |
-| **Rule** | Deterministic logic that turns observations into attention items. Ships with its collector type; thresholds are overridable in config (ADR-0011). |
+| **Rule** | Deterministic logic that turns observations into attention items. Ships with its collector type; thresholds are overridable in config (ADR-0011). One core rule, `core.collector_unreachable`, applies to every collector. |
+| **Collect result** | Outcome of one `collect()`: observations, or an explicit failure that keeps the last known entities (ADR-0009). |
 | **Attention item** | Something that needs a human: created by a rule (or later by the agent), deduplicated by `ruleId + entityKey`, with a lifecycle (ADR-0010). |
 | **Flapping** | An attention item reopening within a configured window after auto-resolving; counted on the existing item rather than creating a new one. |
 | **Overview** | The single snapshot served by `GET /api/overview`: exceptions first, then per-collector health. |

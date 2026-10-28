@@ -1,0 +1,23 @@
+# Local development: Asmodeus against fake Uptime Kuma and Vikunja.
+#   docker compose -f compose.dev.yaml up --build
+#   curl -H 'authorization: Bearer asm_dev_token_not_secret' localhost:8080/api/overview
+services:
+  mocks:
+    image: oven/bun:1.4.2-slim
+    working_dir: /mocks
+    command: ["bun", "src/main.ts"]
+    volumes:
+      - ./dev/mocks:/mocks:ro
+
+  asmodeus:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./examples/dev/asmodeus.yaml:/config/asmodeus.yaml:ro
+      - asmodeus-data:/data
+    depends_on:
+      - mocks
+
+volumes:
+  asmodeus-data:

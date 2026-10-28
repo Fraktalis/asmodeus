@@ -30,11 +30,19 @@
         "drizzle-kit": "^0.31.0",
       },
     },
+    "scripts": {
+      "name": "@asmodeus/scripts",
+      "dependencies": {
+        "@asmodeus/contracts": "workspace:*",
+      },
+    },
   },
   "packages": {
     "@asmodeus/contracts": ["@asmodeus/contracts@workspace:packages/contracts"],
 
     "@asmodeus/mocks": ["@asmodeus/mocks@workspace:dev/mocks"],
+
+    "@asmodeus/scripts": ["@asmodeus/scripts@workspace:scripts"],
 
     "@asmodeus/server": ["@asmodeus/server@workspace:packages/server"],
 

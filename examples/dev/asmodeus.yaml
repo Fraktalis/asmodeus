@@ -1,0 +1,29 @@
+# Local development against fake sources (see compose.dev.yaml).
+server:
+  host: 0.0.0.0
+  port: 8080
+dataDir: /data
+auth:
+  mode: tokens
+  tokens:
+    # Development only. Token: asm_dev_token_not_secret
+    - name: dev
+      sha256: f390cbe5bb91aad8aaf5c80d61fcdeb3fe97ff74295ac9a8174d2d421044325e
+      scopes: [overview:read]
+collectors:
+  - id: kuma
+    type: uptime_kuma
+    intervalSeconds: 10
+    config:
+      baseUrl: http://mocks:9999/kuma
+      apiKey: uk1_dev
+    rules:
+      uptime_kuma.monitor_down:
+        params:
+          forMinutes: 0
+  - id: tasks
+    type: vikunja
+    intervalSeconds: 30
+    config:
+      baseUrl: http://mocks:9999
+      apiToken: tk_dev
