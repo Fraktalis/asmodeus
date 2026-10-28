@@ -1,0 +1,24 @@
+# HELP monitor_cert_days_remaining The number of days remaining until the certificate expires
+# TYPE monitor_cert_days_remaining gauge
+monitor_cert_days_remaining{monitor_name="Tasks",monitor_type="http",monitor_url="https://tasks.example.com",monitor_hostname="null",monitor_port="null"} 62
+monitor_cert_days_remaining{monitor_name="Paperless",monitor_type="http",monitor_url="https://docs.example.com",monitor_hostname="null",monitor_port="null"} 5
+# HELP monitor_cert_is_valid Is the certificate still valid? (1 = Yes, 0= No)
+# TYPE monitor_cert_is_valid gauge
+monitor_cert_is_valid{monitor_name="Tasks",monitor_type="http",monitor_url="https://tasks.example.com",monitor_hostname="null",monitor_port="null"} 1
+monitor_cert_is_valid{monitor_name="Paperless",monitor_type="http",monitor_url="https://docs.example.com",monitor_hostname="null",monitor_port="null"} 1
+# HELP monitor_response_time Monitor Response Time (ms)
+# TYPE monitor_response_time gauge
+monitor_response_time{monitor_name="Tasks",monitor_type="http",monitor_url="https://tasks.example.com",monitor_hostname="null",monitor_port="null"} 87
+monitor_response_time{monitor_name="Paperless",monitor_type="http",monitor_url="https://docs.example.com",monitor_hostname="null",monitor_port="null"} 140
+monitor_response_time{monitor_name="Home Assistant",monitor_type="http",monitor_url="http://192.168.1.10:8123",monitor_hostname="null",monitor_port="null"} -1
+monitor_response_time{monitor_name="NAS \"main\" ping",monitor_type="ping",monitor_url="https://",monitor_hostname="192.168.1.10",monitor_port="null"} 2
+monitor_response_time{monitor_name="Git forge",monitor_type="port",monitor_url="https://",monitor_hostname="192.168.1.11",monitor_port="22"} 0
+monitor_response_time{monitor_name="Media server",monitor_type="http",monitor_url="http://192.168.1.10:32400",monitor_hostname="null",monitor_port="null"} 12
+# HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
+# TYPE monitor_status gauge
+monitor_status{monitor_name="Tasks",monitor_type="http",monitor_url="https://tasks.example.com",monitor_hostname="null",monitor_port="null"} 1
+monitor_status{monitor_name="Paperless",monitor_type="http",monitor_url="https://docs.example.com",monitor_hostname="null",monitor_port="null"} 1
+monitor_status{monitor_name="Home Assistant",monitor_type="http",monitor_url="http://192.168.1.10:8123",monitor_hostname="null",monitor_port="null"} 0
+monitor_status{monitor_name="NAS \"main\" ping",monitor_type="ping",monitor_url="https://",monitor_hostname="192.168.1.10",monitor_port="null"} 1
+monitor_status{monitor_name="Git forge",monitor_type="port",monitor_url="https://",monitor_hostname="192.168.1.11",monitor_port="22"} 2
+monitor_status{monitor_name="Media server",monitor_type="http",monitor_url="http://192.168.1.10:32400",monitor_hostname="null",monitor_port="null"} 3
